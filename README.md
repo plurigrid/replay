@@ -1,5 +1,7 @@
 # CBIMK - Compositional Bayesian Inversion with Markov Kernels
 
+![alt text](Isolated.png "figure")
+
 ## Markov Kernels and Bayesian Inversion
 
 In various scientific and engineering applications, we often encounter systems that exhibit probabilistic transitions between different states over time. Such systems can be elegantly modeled using Markov kernels. A Markov kernel is a mathematical construct that characterizes the probabilistic evolution of states in a Markov process.
