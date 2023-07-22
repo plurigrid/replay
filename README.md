@@ -1,4 +1,4 @@
-#CBIMK - Compositional Bayesian Inversion with Markov Kernels
+# CBIMK - Compositional Bayesian Inversion with Markov Kernels
 
 ## Markov Kernels and Bayesian Inversion
 
