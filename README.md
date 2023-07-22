@@ -1,6 +1,8 @@
 # CBIMK - Compositional Bayesian Inversion with Markov Kernels
 
-![alt text](Isolated.png "figure")
+<p align="center">
+  <img src="Figure_1.png" />
+</p>
 
 ## Markov Kernels and Bayesian Inversion
 
