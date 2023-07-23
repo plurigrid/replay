@@ -1,6 +1,13 @@
 import torch 
 import torch.nn as nn 
 
+import seaborn as sns
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+import numpy as np
+from scipy.stats import gaussian_kde
+
 class MarkovKernel:
     def __init__(self, transition_matrix):
         self.transition_matrix = transition_matrix 
@@ -32,6 +39,7 @@ def compose(markov_kernel, bayesian_inverter):
 
     composed_kernel = ComposedKernel(markov_kernel, bayesian_inverter)
     return composed_kernel
+
 
 if __name__ == "__main__":
     transition_matrix = torch.tensor([[0.8, 0.2], [0.4, 0.6]], dtype = torch.float32)

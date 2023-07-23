@@ -2,6 +2,8 @@ import torch
 import torch.nn as nn 
 from torch import optim
 
+import matplotlib.pyplot as plt 
+
 class BayesianInverter:
     def __init__(self, input_dim, output_dim, hidden_layers = 2, hidden_units = 128, learning_rate = 0.001, dropout_rate = 0.2):
         self.model = nn.Sequential()
@@ -20,23 +22,32 @@ class BayesianInverter:
         dataset = torch.utils.data.TensorDataset(input_data, target_data)
         dataloader = torch.utils.data.DataLoader(dataset, batch_size = batch_size, shuffle = True)
 
+        losses = []
+         
         for epoch in range(epochs):
             total_loss = 0.0
             for inputs, targets in dataloader:
                 self.optimizer.zero_grad()
                 outputs = self.model(inputs)
                 loss = self.loss_function(outputs, targets)
+                
                 loss.backward()
                 self.optimizer.step()
+
                 total_loss += loss.item()
+                losses.appennd(loss.item())
 
             if verbose and (epoch % 100 == 0):
                 print(f"Epoch {epoch}, Loss: {total_loss / len(dataloader):.4f}")
+            return losses
 
     def predict(self, input_data):
         self.model.eval()
         with torch.no_grad():
             return self.model(input_data)
+    
+    def visualize(losses):
+        plt.plot(losses)
 
 if __name__ == "__main__":
     input_data = torch.tensor([[0.7, 0.3], [0.2, 0.8]], dtype = torch.float32)
@@ -44,7 +55,7 @@ if __name__ == "__main__":
 
     bayesian_inverter = BayesianInverter(input_dim = 2, output_dim = 2, hidden_layers = 3, 
                                          hidden_units = 256, learning_rate = 0.001, dropout_rate = 0.3)
-    bayesian_inverter.invert(input_data, target_data)
+    losses = bayesian_inverter.invert(input_data, target_data)
 
     test_data = torch.tensor([[0.5, 0.5], [0.1, 0.9]], dtype = torch.float32)
     predicted_output = bayesian_inverter.predict(test_data)
@@ -54,3 +65,5 @@ if __name__ == "__main__":
 
     print("Predicted output (approximated inverse transformation):")
     print(predicted_output)
+
+    
