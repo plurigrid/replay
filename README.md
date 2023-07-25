@@ -1,8 +1,6 @@
 # CBIMK - Compositional Bayesian Inversion with Stochastic Markov Kernels
 
-<p align="center">
-  <img src="Figure_1.png" />
-</p>
+
 
 ## Markov Kernels and Bayesian Inversions
 
