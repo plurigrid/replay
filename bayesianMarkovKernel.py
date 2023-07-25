@@ -42,11 +42,11 @@ def compose(markov_kernel, bayesian_inverter):
 
 
 if __name__ == "__main__":
-    transition_matrix = torch.tensor([[0.8, 0.2], [0.4, 0.6]], dtype = torch.float32)
+    transition_matrix = torch.tensor([[0.8, 0.2], [0.4, 0.6], [0.5, 0.3]], dtype = torch.float32)
     markov_kernel = MarkovKernel(transition_matrix)
-    bayesian_inverter = BayesianInverter(2, 2)
+    bayesian_inverter = BayesianInverter(2, 3)
 
-    input_data = torch.tensor([[0.7, 0.3], [0.2, 0.8]], dtype = torch.float32)
+    input_data = torch.tensor([[0.7, 0.3, 0.5], [0.2, 0.8, 0.9], [0.7, 0.6, 0.1]], dtype = torch.float32)
     output = compose(markov_kernel, bayesian_inverter).apply(input_data)
 
     print("Input data: ")
