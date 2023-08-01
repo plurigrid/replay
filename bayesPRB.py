@@ -62,11 +62,11 @@ class TestPrioritizedReplayBuffer(unittest.TestCase):
 
         batch_size = 32
         (states, actions, rewards, next_states, dones), indices, weights = buffer.sample(batch_size)
-        self.assertEqual(len(states), batch_size)  # Check the state size
-        self.assertEqual(len(actions), batch_size)  # Check the action size
-        self.assertEqual(len(rewards), batch_size)  # Check the reward size
-        self.assertEqual(len(next_states), batch_size)  # Check the next_state size
-        self.assertEqual(len(dones), batch_size)  # Check the done size
+        self.assertEqual(len(states), batch_size)  
+        self.assertEqual(len(actions), batch_size)  
+        self.assertEqual(len(rewards), batch_size)  
+        self.assertEqual(len(next_states), batch_size)  
+        self.assertEqual(len(dones), batch_size)  
         self.assertEqual(len(indices), batch_size)
         self.assertEqual(len(weights), batch_size)
 
